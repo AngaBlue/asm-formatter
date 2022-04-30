@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "esnext",
+        "outDir": "build",
+        "rootDir": "src",
+        "esModuleInterop": true,
+        "noImplicitAny": true,
+        "typeRoots": [
+            "node_modules/@types",
+            "src/typings"
+        ],
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "lib": ["ES6"],
+        "pretty": true,
+        "resolveJsonModule": true,
+        "skipLibCheck": true,
+        "sourceMap": true
+    },
+    "include": [
+        "src"
+    ]
+}

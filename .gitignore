@@ -1,0 +1,18 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Config
+config.json
+
+# Ecosystem
+ecosystem.config.js
+
+# Dependency directories
+node_modules/
+
+# Build
+build
