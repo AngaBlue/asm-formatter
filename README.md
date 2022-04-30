@@ -14,7 +14,7 @@
 
 A formatter extension for VSCode supporting the MIPS assembly language.
 
-![Formatted code example](https://i.anga.blue/xP5y.png)
+![Formatted code example](https://i.anga.blue/AaM5.png)
 
 ## Features
 
