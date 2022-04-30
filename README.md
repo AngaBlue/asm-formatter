@@ -7,7 +7,19 @@
 </p>
 
 A formatter extension for VSCode supporting the MIPS assembly language.
-### 🏠 [Homepage](https://github.com/AngaBlue/asm-formatter)
+
+![Formatted code example](https://i.anga.blue/xP5y.png)
+
+## Features
+ - Align all instructions and arguments
+ - Align all comments
+ - Cleans up extra whitespace
+## Install & Usage
+Install the extension from the [VSCode Marketplace](https://marketplace.visualstudio.com/items?itemName=AngaBlue.asm-formatter).
+
+When editing an assembly file (.asm), format the file using the command `Ctrl` `Alt` `F`.
+
+To get syntax highlighting and MIPS snippets, install the [MIPS Language Support](https://marketplace.visualstudio.com/items?itemName=kdarkhan.mips) extension.
 
 ## Author
 

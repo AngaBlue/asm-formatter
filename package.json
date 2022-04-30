@@ -1,5 +1,6 @@
 {
   "name": "asm-formatter",
+  "displayName": "ASM Formatter",
   "version": "1.0.0",
   "publisher": "AngaBlue",
   "categories": [
