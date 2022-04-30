@@ -94,7 +94,7 @@ export default function formatter(document: TextDocument): TextEdit[] {
                 }
                 break;
             case LineType.CODE:
-                result = `${result.padEnd(commentIndentation, ' ')}${line.comment}`;
+                if (line.comment) result = `${result.padEnd(commentIndentation, ' ')}${line.comment}`;
                 prevLineIndented = true;
                 break;
         }

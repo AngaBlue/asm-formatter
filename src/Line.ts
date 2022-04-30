@@ -2,7 +2,7 @@ import { Range, TextLine } from 'vscode';
 import LineType from './LineType';
 
 export default class Line {
-    static labelPattern = /^\w+:$/;
+    static labelPattern = /^\w+:/;
 
     static argPattern = /[\s,]+/;
 
