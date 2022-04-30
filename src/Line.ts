@@ -1,13 +1,12 @@
 import { Range, TextLine } from 'vscode';
-
-export enum LineType {
-    BLANK,
-    COMMENT,
-    CODE
-}
+import LineType from './LineType';
 
 export default class Line {
     static labelPattern = /^\w+:$/;
+
+    static argPattern = /[\s,]+/;
+
+    type = LineType.BLANK;
 
     range: Range;
 
@@ -21,16 +20,21 @@ export default class Line {
 
     comment?: string;
 
-    type = LineType.BLANK;
-
     constructor(line: TextLine) {
         this.range = line.range;
 
         const [text, ...comment] = line.text.trim().split('#');
         this.comment = comment.join('#').trim();
 
-        if (!text) this.type = this.comment ? LineType.COMMENT : LineType.BLANK;
-        else this.type = LineType.CODE;
+        // Set type
+        if (!text) {
+            this.type = this.comment ? LineType.COMMENT : LineType.BLANK;
+        } else {
+            this.type = LineType.CODE;
+        }
+
+        // Comment
+        if (this.comment) this.comment = `# ${this.comment}`;
 
         // Assembler directive
         if (text.startsWith('.')) {
@@ -44,9 +48,11 @@ export default class Line {
             return;
         }
 
-        // Code
-        const [instruction, ...args] = text.split(/[\s,]+/);
+        // Instruction & Arguments
+        const [instruction, ...args] = text.split(Line.argPattern);
         this.instruction = instruction;
+
+        // Filter out empty arguments
         this.arguments = args.filter(a => a);
     }
 }
