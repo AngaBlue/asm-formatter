@@ -7,8 +7,7 @@
     "Formatters"
   ],
   "activationEvents": [
-    "onLanguage:mips",
-    "onLanguage:asm"
+    "onLanguage:mips"
   ],
   "description": "A formatter extension for VSCode supporting the MIPS assembly language.",
   "main": "build/index.js",
