@@ -3,6 +3,7 @@
   "displayName": "ASM Formatter",
   "version": "1.0.3",
   "publisher": "AngaBlue",
+  "icon": "images/icon.png",
   "categories": [
     "Formatters"
   ],
