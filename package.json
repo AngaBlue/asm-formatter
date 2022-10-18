@@ -26,10 +26,9 @@
     ]
   },
   "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc",
+    "vscode:prepublish": "npm run build",
+    "build": "tsc",
     "watch": "tsc -watch",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --ext js,jsx,ts,tsx --fix"
   },
   "engines": {
