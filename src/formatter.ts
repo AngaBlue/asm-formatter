@@ -22,6 +22,7 @@ export default function formatter(document: TextDocument): TextEdit[] {
 
     let widths = [0, 0, 0]; // Largest MIPS instruction has 3 arguments
     let firstLabel: number | null = null;
+    let longest = 0;
     for (let index = 0; index < lines.length; index++) {
         const line = lines[index];
         if (line.label && firstLabel === null) firstLabel = index;
@@ -34,15 +35,29 @@ export default function formatter(document: TextDocument): TextEdit[] {
                 if (width > widths[arg]) widths[arg] = width;
             }
         }
+
+        // Label
+        if (line.label) {
+            const width = line.label.length;
+            if (width > longest) longest = width;
+        }
+
+        // Directive
+        if (line.directive) {
+            const width = line.directive.length;
+            if (width > longest) longest = width;
+        }
     }
 
     // Normalize widths to a multiple of tab size
     widths = widths.map(w => Math.ceil(w / TAB_SIZE) * TAB_SIZE);
+    longest = Math.ceil(longest / TAB_SIZE) * TAB_SIZE;
 
     // Find largest comment indentation
     let commentIndentation = 2 * TAB_SIZE; // 2 tabs for instruction
     if (firstLabel !== null) commentIndentation += TAB_SIZE;
     commentIndentation += widths.reduce((sum, width) => sum + width, 0);
+    if (commentIndentation < longest) commentIndentation = longest;
 
     /**
      * Format Lines
