@@ -42,11 +42,11 @@
   "license": "LGPL-3.0-or-later",
   "devDependencies": {
     "@angablue/eslint-config": "^1.4.3",
-    "@types/node": "^18.11.18",
-    "@types/vscode": "^1.74.0",
-    "eslint": "^8.33.0",
-    "prettier": "^2.8.3",
-    "typescript": "^4.9.4"
+    "@types/node": "^20.8.9",
+    "@types/vscode": "^1.83.1",
+    "eslint": "^8.52.0",
+    "prettier": "^2.8.8",
+    "typescript": "^5.2.2"
   },
   "repository": {
     "type": "git",

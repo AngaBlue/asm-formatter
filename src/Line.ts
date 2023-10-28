@@ -1,5 +1,5 @@
 import { Range, TextLine } from 'vscode';
-import LineType from './LineType';
+import LineType from './LineType.js';
 
 export default class Line {
     static labelPattern = /^\w+:/;

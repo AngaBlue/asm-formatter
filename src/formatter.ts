@@ -1,6 +1,6 @@
 import { TextDocument, TextEdit } from 'vscode';
-import Line from './Line';
-import LineType from './LineType';
+import Line from './Line.js';
+import LineType from './LineType.js';
 
 // Tab size of 4 spaces
 const TAB = '    ';
