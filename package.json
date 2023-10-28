@@ -36,7 +36,7 @@
     "lint": "eslint . --ext js,jsx,ts,tsx --fix"
   },
   "engines": {
-    "vscode": "^1.74.0"
+    "vscode": "^1.83.1"
   },
   "keywords": [
     "vscode",
