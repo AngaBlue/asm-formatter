@@ -30,7 +30,7 @@
     ]
   },
   "scripts": {
-    "vscode:prepublish": "pnpm run build",
+    "vscode:prepublish": "npm run build",
     "build": "tsc",
     "watch": "tsc -watch",
     "lint": "eslint . --ext js,jsx,ts,tsx --fix"
