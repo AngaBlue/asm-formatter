@@ -15,12 +15,16 @@
   "contributes": {
     "languages": [
       {
-        "id": "MIPS Assembly",
+        "id": "mips",
         "aliases": [
-          "MIPS"
+          "MIPS Assembly",
+          "mips"
         ],
         "extensions": [
-          "asm"
+          ".s",
+          ".mips",
+          ".spim",
+          ".asm"
         ]
       }
     ]

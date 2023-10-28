@@ -1,10 +1,9 @@
-import { TextDocument, TextEdit } from 'vscode';
+import { Position, Range, TextDocument, TextEdit } from 'vscode';
 import Line from './Line.js';
-import LineType from './LineType.js';
 
 // Tab size of 4 spaces
-const TAB = '    ';
-const TAB_SIZE = TAB.length;
+const TAB_SIZE = 4;
+const TAB = ' '.repeat(TAB_SIZE);
 
 export default function formatter(document: TextDocument): TextEdit[] {
     /**
@@ -22,13 +21,14 @@ export default function formatter(document: TextDocument): TextEdit[] {
 
     let widths = [0, 0, 0]; // Largest MIPS instruction has 3 arguments
     let firstLabel: number | null = null;
-    let longest = 0;
+    let longestLabel = 0;
+    let longestDirective = 0;
     for (let index = 0; index < lines.length; index++) {
         const line = lines[index];
-        if (line.label && firstLabel === null) firstLabel = index;
+        if (line.label && !line.directive && firstLabel === null) firstLabel = index;
 
         // For each argument, find the largest argument width out of each line
-        if (line.arguments) {
+        if (line.arguments && !line.directive) {
             for (let arg = 0; arg < line.arguments.length; arg++) {
                 // Argument width + 2 (for ',' and ' ')
                 const width = line.arguments[arg].length + 2;
@@ -36,42 +36,35 @@ export default function formatter(document: TextDocument): TextEdit[] {
             }
         }
 
-        // Label
-        if (line.label) {
-            const width = line.label.length;
-            if (width > longest) longest = width;
-        }
+        // Label & Directive
+        if (line.label && line.directive) {
+            // Label
+            let width = line.label.length;
+            if (width > longestLabel) longestLabel = width;
 
-        // Directive
-        if (line.directive) {
-            const width = line.directive.length;
-            if (width > longest) longest = width;
+            // Directive
+            width = line.directive.length;
+            if (width > longestDirective) longestDirective = width;
         }
     }
 
     // Normalize widths to a multiple of tab size
     widths = widths.map(w => Math.ceil(w / TAB_SIZE) * TAB_SIZE);
-    longest = Math.ceil(longest / TAB_SIZE) * TAB_SIZE;
-
-    // Find largest comment indentation
-    let commentIndentation = 2 * TAB_SIZE; // 2 tabs for instruction
-    if (firstLabel !== null) commentIndentation += TAB_SIZE;
-    commentIndentation += widths.reduce((sum, width) => sum + width, 0);
-    if (commentIndentation < longest) commentIndentation = longest;
+    longestLabel = Math.floor(longestLabel / TAB_SIZE + 1) * TAB_SIZE;
+    longestDirective = Math.floor(longestDirective / TAB_SIZE + 1) * TAB_SIZE;
 
     /**
      * Format Lines
      */
 
-    let prevLineIndented = false;
     const edits = lines.map(line => {
         let result = '';
 
-        // Directive
-        if (line.directive) result += line.directive;
-
         // Label
-        if (line.label) result += line.label;
+        if (line.label) result += line.label.padEnd(longestLabel, ' ');
+
+        // Directive
+        if (line.directive) result += line.label ? line.directive.padEnd(longestDirective, ' ') : line.directive;
 
         // Instruction
         if (line.instruction) {
@@ -84,38 +77,31 @@ export default function formatter(document: TextDocument): TextEdit[] {
             line.arguments.forEach((arg, index) => {
                 if (index !== line.arguments.length - 1) {
                     // Join and pad arguments
-                    arg += ',';
-                    arg = arg.padEnd(widths[index], ' ');
+                    arg += ', ';
+                    if (!line.directive) arg = arg.padEnd(widths[index], ' ');
                 }
 
                 result += arg;
             });
         }
 
-        // Comment
-        switch (line.type) {
-            case LineType.BLANK:
-                prevLineIndented = false;
-                break;
-            case LineType.COMMENT:
-                // If last line wasn't indented
-                if (prevLineIndented) {
-                    // Indent comment
-                    result = `${result.padEnd(commentIndentation, ' ')}${line.comment}`;
-                    prevLineIndented = true;
-                } else {
-                    // Don't indent comment
-                    result = line.comment;
-                }
-                break;
-            case LineType.CODE:
-                if (line.comment) result = `${result.padEnd(commentIndentation, ' ')}${line.comment}`;
-                prevLineIndented = true;
-                break;
-        }
-
-        return TextEdit.replace(line.range, result);
+        return result;
     });
 
-    return edits;
+    // Longest line
+    let longestLine = edits.reduce((length, line) => (line.length > length ? line.length : length), 0);
+    longestLine = Math.floor(longestLine / TAB_SIZE + 1) * TAB_SIZE;
+
+    for (let i = 0; i < lines.length; i++) {
+        const line = lines[i];
+        if (!line.comment) continue;
+
+        if (!line.label && !line.directive && !line.instruction) edits[i] = TAB + line.comment;
+        else if (line.label && line.directive && line.instruction) edits[i] += ` ${line.comment}`;
+        else edits[i] = edits[i].padEnd(longestLine, ' ') + line.comment;
+    }
+
+    // Commit edits
+    const range = new Range(new Position(0, 0), document.lineAt(document.lineCount - 1).range.end);
+    return [TextEdit.replace(range, edits.join('\n'))];
 }
