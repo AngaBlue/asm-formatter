@@ -18,7 +18,8 @@
         "id": "mips",
         "aliases": [
           "MIPS Assembly",
-          "mips"
+          "mips",
+          "asm"
         ],
         "extensions": [
           ".asm",
