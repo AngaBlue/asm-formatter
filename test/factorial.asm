@@ -11,7 +11,7 @@ main:
     # Calculate factorial of 5 (change this to calculate another number)
     li      $a0,        5
     jal     factorial
-    
+
     # Print the result
     move    $a0,        $v0
     li      $v0,        1
