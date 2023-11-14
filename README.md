@@ -30,6 +30,9 @@ When editing an assembly file (.asm .s .mips .spim), format the file using the c
 
 To get syntax highlighting and MIPS snippets, install the [MIPS Language Support](https://marketplace.visualstudio.com/items?itemName=kdarkhan.mips) extension.
 
+## Contributing
+Please feel free to open an issue or pull request for any bugs or feature requests.  A guide to setup and development can be found in [DEVELOPMENT.md](https://github.com/AngaBlue/asm-formatter/blob/master/DEVELOPMENT.md).
+
 ## Author
 
 👤 **AngaBlue <contact@anga.blue>**
@@ -43,5 +46,4 @@ Give a ⭐️ if this project helped you!
 
 ## 📝 License
 
-Copyright © 2021 [AngaBlue <contact@anga.blue>](https://github.com/AngaBlue).<br />
 This project is [LGPL--3.0--or--later](https://github.com/AngaBlue/asm-formatter/blob/master/LICENSE) licensed.
