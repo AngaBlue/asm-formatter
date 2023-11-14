@@ -56,15 +56,18 @@ export default function formatter(document: TextDocument): TextEdit[] {
     /**
      * Format Lines
      */
-
-    const edits = lines.map(line => {
+    const textSectionIndex = lines.findIndex(line => line.directive === '.text');
+    const edits = lines.map((line, index) => {
         let result = '';
 
         // Label
         if (line.label) result += line.label.padEnd(longestLabel, ' ');
 
+        // Indentation
+        if (index < textSectionIndex && !line.label && line.directive && line.directive !== '.data') result = result.padEnd(longestLabel, ' ');
+
         // Directive
-        if (line.directive) result += line.label ? line.directive.padEnd(longestDirective, ' ') : line.directive;
+        if (line.directive) result += index < textSectionIndex ? line.directive.padEnd(longestDirective, ' ') : line.directive;
 
         // Instruction
         if (line.instruction) {
