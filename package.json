@@ -37,7 +37,7 @@
     "lint": "eslint . --ext js,jsx,ts,tsx --fix"
   },
   "engines": {
-    "vscode": "^1.83.1"
+    "vscode": "^1.84.1"
   },
   "keywords": [
     "vscode",
@@ -50,9 +50,9 @@
   "license": "LGPL-3.0-or-later",
   "devDependencies": {
     "@angablue/eslint-config": "^1.4.3",
-    "@types/node": "^20.8.9",
-    "@types/vscode": "^1.83.1",
-    "eslint": "^8.52.0",
+    "@types/node": "^20.9.0",
+    "@types/vscode": "^1.84.1",
+    "eslint": "^8.53.0",
     "prettier": "^2.8.8",
     "typescript": "^5.2.2"
   },
