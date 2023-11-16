@@ -14,7 +14,7 @@ SomeLabel:      .word       1, 2, 3, 4                  # Comment after data
 
                 .extern     main
                 .globl      main
-.text
+.text       
 
 main:                                                   # Entry point
     li      $t0,    5                                   # Load immediate

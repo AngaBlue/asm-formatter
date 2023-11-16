@@ -1,4 +1,4 @@
-.data
+.data   
 message:    .asciiz "Factorial: ;; "
 
 .text
