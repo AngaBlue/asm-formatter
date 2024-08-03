@@ -1,7 +1,7 @@
 {
   "name": "asm-formatter",
   "displayName": "MIPS Assembly Formatter",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "publisher": "AngaBlue",
   "icon": "icon.png",
   "categories": [
