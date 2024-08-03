@@ -1,11 +1,11 @@
-.data       
+.data
 LabelVeryLong:  .word       5
 LabelShort:     .word       10
 AnotherLabel:   .asciiz     "This is a string#;.,\"f"
 Ascii:          .ascii      "Unterminated string"
 Message:        .halfword   'A'
 LabelMed:       .word       20
-MultiLine:      
+MultiLine:
                 .double     0.1, 0.2, 0.3
                 .double     0.4, 0.5, 0.6
                 .double     0.7, 0.8, 0.9
@@ -14,7 +14,7 @@ SomeLabel:      .word       1, 2, 3, 4                  # Comment after data
 
                 .extern     main
                 .globl      main
-.text       
+.text
 
 main:                                                   # Entry point
     li      $t0,    5                                   # Load immediate
@@ -27,7 +27,7 @@ SomeLabel:                                              # Comment here too
 AnotherFunction:
     mult    $t0,    $t1
     mflo    $t3
-    syscall 
+    syscall
 
     # Another comment line here, but this time its inside a label
     sw      $t3,    0($sp)

@@ -56,7 +56,7 @@ export default function formatter(document: TextDocument): TextEdit[] {
     /**
      * Format Lines
      */
-    const edits = lines.map((line, index) => {
+    const edits = lines.map(line => {
         let result = '';
 
         // Label
@@ -105,5 +105,5 @@ export default function formatter(document: TextDocument): TextEdit[] {
 
     // Commit edits
     const range = new Range(new Position(0, 0), document.lineAt(document.lineCount - 1).range.end);
-    return [TextEdit.replace(range, edits.join('\n'))];
+    return [TextEdit.replace(range, edits.map(edit => edit.trimEnd()).join('\n'))];
 }

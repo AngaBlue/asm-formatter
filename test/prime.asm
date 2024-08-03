@@ -14,7 +14,7 @@ main_loop:
     bne     $s1,        $s2,        main_loop   # if not at end continue looping, go to main_loop
 
     li      $v0,        10                      # exit
-    syscall 
+    syscall
 
 test_prime:
     subi    $sp,        $sp,        8
