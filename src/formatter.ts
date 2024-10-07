@@ -36,14 +36,16 @@ export default function formatter(document: TextDocument): TextEdit[] {
             }
         }
 
-        // Label & Directive
-        if (line.label && line.directive) {
+        // Label
+        if (line.label && line.hasPropertyAfter('label')) {
             // Label
             let width = line.label.length;
             if (width > longestLabel) longestLabel = width;
+        }
 
+        if (line.directive && line.hasPropertyAfter('directive')) {
             // Directive
-            width = line.directive.length;
+            let width = line.directive.length;
             if (width > longestDirective) longestDirective = width;
         }
     }

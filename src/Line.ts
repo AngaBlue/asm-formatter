@@ -1,5 +1,7 @@
 import { TextLine } from 'vscode';
 
+type LineProperty = 'directive' | 'data' | 'label' | 'instruction' | 'arguments' | 'comment';
+
 export default class Line {
     private static patterns = {
         label: /^\w+:/,
@@ -20,6 +22,23 @@ export default class Line {
     arguments?: string[];
 
     comment?: string;
+
+    /**
+     * Check if the line has a property after the property of comparison.
+     * @param property The property to check for.
+     * @returns If the line has the property after the property of comparison.
+     */
+    hasPropertyAfter = (property: LineProperty) => {
+        // If the property doesn't exist, return false
+        if (!this[property]) return false;
+
+        // Get the index of the property of comparison
+        const properties = ['label', 'directive', 'data', 'instruction', 'arguments', 'comment'];
+        const index = properties.indexOf(property);
+
+        // Check if there are any properties after the property of comparison
+        return properties.slice(index + 1).some(p => Array.isArray(this[p as LineProperty]) ? this[p as LineProperty]!.length : this[p as LineProperty]);
+    }
 
     constructor(line: TextLine) {
         // Trim the line
