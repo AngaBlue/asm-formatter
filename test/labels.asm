@@ -19,6 +19,7 @@ SomeLabel:      .word       1, 2, 3, 4                  # Comment after data
 main:                                                   # Entry point
     li      $t0,    5                                   # Load immediate
     add     $t1,    $t0,    $zero                       ; Another way to comment
+    li      $t4,    ','                                 # comma
 
     # Blank line above, at the end of a label block
 SomeLabel:                                              # Comment here too

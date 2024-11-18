@@ -6,7 +6,7 @@ export default class Line {
     private static patterns = {
         label: /^\w+:/,
         directive: /^\.\w+/,
-        arg: /[\s,]+/,
+        arg: /(?<!')\,(?!')|[\s]+/,
         string: /^"([^"\\]*(?:\\.[^"\\]*)*)"/,
         comment: /[#;].+/
     };
