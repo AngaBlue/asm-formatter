@@ -6,7 +6,7 @@ export default class Line {
     private static patterns = {
         label: /^\w+:/,
         directive: /^\.\w+/,
-        arg: /(?<!')\,(?!')|[\s]+/,
+        arg: /(?<!')\,(?!')/,
         string: /^"([^"\\]*(?:\\.[^"\\]*)*)"/,
         comment: /[#;].+/
     };
@@ -62,7 +62,7 @@ export default class Line {
         match = text.match(Line.patterns.string);
         if (match) {
             this.arguments = [match.at(0)];
-            text = text.slice(this.arguments[0].length).trimStart();
+            text = text.slice(this.arguments[0].length);
         }
 
         // Comment separator
@@ -73,8 +73,12 @@ export default class Line {
         }
 
         // Instruction & Arguments
-        const args = text.split(Line.patterns.arg).filter(a => a);
-        if (!this.directive) this.instruction = args.shift();
+        const args = text.split(Line.patterns.arg).map(a => a.trim()).filter(a => a);
+        if (!this.directive && args.length > 0) {
+            let [instruction, arg] = args.shift().split(/\s+/);
+            this.instruction = instruction;
+            if (arg) args.unshift(arg);
+        }
 
         // Save arguments
         if (this.arguments) this.arguments.push(...args);
