@@ -1,11 +1,9 @@
+.github/**
 .vscode/**
-.vscode-test/**
+build/**/*.js.map
+node_modules/**
 src/**
-.gitignore
-.yarnrc
-vsc-extension-quickstart.md
-**/tsconfig.json
-**/.eslint*
-**/*.map
-**/*.ts
 test/**
+.gitignore
+biome.jsonc
+tsconfig.json
