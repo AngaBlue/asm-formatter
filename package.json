@@ -24,7 +24,7 @@
 		"lint": "biome check --fix --error-on-warnings"
 	},
 	"engines": {
-		"vscode": "^1.92.0"
+		"vscode": "^1.96.0"
 	},
 	"keywords": ["vscode", "formatter", "mips", "assembly", "asm"],
 	"author": "AngaBlue <contact@anga.blue>",
@@ -32,9 +32,9 @@
 	"devDependencies": {
 		"@angablue/biome-config": "^1.0.1",
 		"@biomejs/biome": "^1.9.4",
-		"@types/node": "^22.1.0",
-		"@types/vscode": "^1.92.0",
-		"typescript": "^5.5.4"
+		"@types/node": "^22.10.5",
+		"@types/vscode": "^1.96.0",
+		"typescript": "^5.7.3"
 	},
 	"repository": {
 		"type": "git",
