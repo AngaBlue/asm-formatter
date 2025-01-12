@@ -34,7 +34,7 @@
     "vscode:prepublish": "npm run build",
     "build": "tsc",
     "watch": "tsc -watch",
-    "lint": "eslint . --ext js,jsx,ts,tsx --fix"
+    "lint": "biome check --fix --error-on-warnings"
   },
   "engines": {
     "vscode": "^1.92.0"
@@ -49,11 +49,10 @@
   "author": "AngaBlue <contact@anga.blue>",
   "license": "LGPL-3.0-or-later",
   "devDependencies": {
-    "@angablue/eslint-config": "^1.4.5",
+    "@angablue/biome-config": "^1.0.1",
+    "@biomejs/biome": "^1.9.4",
     "@types/node": "^22.1.0",
     "@types/vscode": "^1.92.0",
-    "eslint": "^8.57.0",
-    "prettier": "^3.3.3",
     "typescript": "^5.5.4"
   },
   "repository": {
