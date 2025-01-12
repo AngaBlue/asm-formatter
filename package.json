@@ -1,62 +1,43 @@
 {
-  "name": "asm-formatter",
-  "displayName": "MIPS Assembly Formatter",
-  "version": "1.2.11",
-  "publisher": "AngaBlue",
-  "icon": "icon.png",
-  "categories": [
-    "Formatters"
-  ],
-  "activationEvents": [
-    "onLanguage:mips"
-  ],
-  "description": "A formatter extension for VSCode supporting the MIPS assembly language.",
-  "main": "build/index.js",
-  "contributes": {
-    "languages": [
-      {
-        "id": "mips",
-        "aliases": [
-          "MIPS Assembly",
-          "mips",
-          "asm"
-        ],
-        "extensions": [
-          ".asm",
-          ".s",
-          ".mips",
-          ".spim"
-        ]
-      }
-    ]
-  },
-  "scripts": {
-    "vscode:prepublish": "npm run build",
-    "build": "tsc",
-    "watch": "tsc -watch",
-    "lint": "biome check --fix --error-on-warnings"
-  },
-  "engines": {
-    "vscode": "^1.92.0"
-  },
-  "keywords": [
-    "vscode",
-    "formatter",
-    "mips",
-    "assembly",
-    "asm"
-  ],
-  "author": "AngaBlue <contact@anga.blue>",
-  "license": "LGPL-3.0-or-later",
-  "devDependencies": {
-    "@angablue/biome-config": "^1.0.1",
-    "@biomejs/biome": "^1.9.4",
-    "@types/node": "^22.1.0",
-    "@types/vscode": "^1.92.0",
-    "typescript": "^5.5.4"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/AngaBlue/asm-formatter"
-  }
+	"name": "asm-formatter",
+	"displayName": "MIPS Assembly Formatter",
+	"version": "1.2.11",
+	"publisher": "AngaBlue",
+	"icon": "icon.png",
+	"categories": ["Formatters"],
+	"activationEvents": ["onLanguage:mips"],
+	"description": "A formatter extension for VSCode supporting the MIPS assembly language.",
+	"main": "build/index.js",
+	"contributes": {
+		"languages": [
+			{
+				"id": "mips",
+				"aliases": ["MIPS Assembly", "mips", "asm"],
+				"extensions": [".asm", ".s", ".mips", ".spim"]
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run build",
+		"build": "tsc",
+		"watch": "tsc -watch",
+		"lint": "biome check --fix --error-on-warnings"
+	},
+	"engines": {
+		"vscode": "^1.92.0"
+	},
+	"keywords": ["vscode", "formatter", "mips", "assembly", "asm"],
+	"author": "AngaBlue <contact@anga.blue>",
+	"license": "LGPL-3.0-or-later",
+	"devDependencies": {
+		"@angablue/biome-config": "^1.0.1",
+		"@biomejs/biome": "^1.9.4",
+		"@types/node": "^22.1.0",
+		"@types/vscode": "^1.92.0",
+		"typescript": "^5.5.4"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/AngaBlue/asm-formatter"
+	}
 }
