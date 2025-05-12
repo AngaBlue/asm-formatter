@@ -34,11 +34,11 @@
 	},
 	"license": "MIT",
 	"devDependencies": {
-		"@angablue/biome-config": "^1.0.1",
+		"@angablue/biome-config": "^1.0.5",
 		"@biomejs/biome": "^1.9.4",
-		"@types/node": "^22.10.5",
-		"@types/vscode": "^1.96.0",
-		"typescript": "^5.7.3"
+		"@types/node": "^22.15.17",
+		"@types/vscode": "^1.100.0",
+		"typescript": "^5.8.3"
 	},
 	"repository": {
 		"type": "git",
