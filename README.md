@@ -1,15 +1,14 @@
 <h1 align="center">MIPS Assembly Formatter</h1>
 <p align="center">
   <a href="https://marketplace.visualstudio.com/items?itemName=AngaBlue.asm-formatter" target="_blank">
-  <img alt="Version" src="https://img.shields.io/visual-studio-marketplace/v/AngaBlue.asm-formatter?label=Version" />
+    <img alt="Version" src="https://img.shields.io/visual-studio-marketplace/v/AngaBlue.asm-formatter?label=Version" />
   </a>
-    <a href="https://marketplace.visualstudio.com/items?itemName=AngaBlue.asm-formatter" target="_blank">
-  <img alt="Rating" src="https://img.shields.io/visual-studio-marketplace/stars/AngaBlue.asm-formatter?label=Rating" />
+  <a href="https://marketplace.visualstudio.com/items?itemName=AngaBlue.asm-formatter" target="_blank">
+    <img alt="Rating" src="https://img.shields.io/visual-studio-marketplace/stars/AngaBlue.asm-formatter?label=Rating" />
   </a>
   <a href="https://github.com/AngaBlue/asm-formatter/blob/master/LICENSE" target="_blank">
-    <img alt="License: LGPL--3.0--or--later" src="https://img.shields.io/github/license/AngaBlue/asm-formatter?color=green&label=License" />
+    <img alt="License: MIT" src="https://img.shields.io/github/license/AngaBlue/asm-formatter?color=green&label=Licence" />
   </a>
-
 </p>
 
 A formatter extension for VSCode supporting the MIPS assembly language.
@@ -46,4 +45,4 @@ Give a ⭐️ if this project helped you!
 
 ## 📝 License
 
-This project is [LGPL--3.0--or--later](https://github.com/AngaBlue/asm-formatter/blob/master/LICENSE) licensed.
+This project is [MIT](https://github.com/AngaBlue/asm-formatter/blob/master/LICENSE) licensed.
