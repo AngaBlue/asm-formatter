@@ -1,19 +1,32 @@
 {
 	"name": "asm-formatter",
 	"displayName": "MIPS Assembly Formatter",
-	"version": "1.2.12",
+	"version": "1.2.13",
 	"publisher": "AngaBlue",
 	"icon": "icon.png",
-	"categories": ["Formatters"],
-	"activationEvents": ["onLanguage:mips"],
+	"categories": [
+		"Formatters"
+	],
+	"activationEvents": [
+		"onLanguage:mips"
+	],
 	"description": "A formatter extension for VSCode supporting the MIPS assembly language.",
 	"main": "build/index.js",
 	"contributes": {
 		"languages": [
 			{
 				"id": "mips",
-				"aliases": ["MIPS Assembly", "mips", "asm"],
-				"extensions": [".asm", ".s", ".mips", ".spim"]
+				"aliases": [
+					"MIPS Assembly",
+					"mips",
+					"asm"
+				],
+				"extensions": [
+					".asm",
+					".s",
+					".mips",
+					".spim"
+				]
 			}
 		]
 	},
@@ -26,7 +39,13 @@
 	"engines": {
 		"vscode": "^1.100.0"
 	},
-	"keywords": ["vscode", "formatter", "mips", "assembly", "asm"],
+	"keywords": [
+		"vscode",
+		"formatter",
+		"mips",
+		"assembly",
+		"asm"
+	],
 	"author": {
 		"name": "AngaBlue",
 		"email": "contact@anga.blue",
