@@ -23,9 +23,9 @@ export default function formatter(document: TextDocument): TextEdit[] {
 	let firstLabel: number | null = null;
 	let longestLabel = 0;
 	let longestDirective = 0;
-	for (let index = 0; index < lines.length; index++) {
-		const line = lines[index];
-		if (line.label && !line.directive && firstLabel === null) firstLabel = index;
+	for (let i = 0; i < lines.length; i++) {
+		const line = lines[i];
+		if (line.label && !line.directive && firstLabel === null) firstLabel = i;
 
 		// For each argument, find the largest argument width out of each line
 		if (line.arguments && !line.directive) {
@@ -78,16 +78,15 @@ export default function formatter(document: TextDocument): TextEdit[] {
 
 		// Arguments
 		if (line.arguments) {
-			line.arguments.forEach((arg, index) => {
-				let constructed = arg;
-				if (index !== line.arguments.length - 1) {
+			for (let i = 0; i < line.arguments.length; i++) {
+				let constructed = line.arguments[i];
+				if (i !== line.arguments?.length - 1) {
 					// Join and pad arguments
 					constructed += ', ';
-					if (!line.directive) constructed = constructed.padEnd(widths[index], ' ');
+					if (!line.directive) constructed = constructed.padEnd(widths[i], ' ');
 				}
-
 				result += constructed;
-			});
+			}
 		}
 
 		return result;

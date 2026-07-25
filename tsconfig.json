@@ -9,7 +9,7 @@
 		"typeRoots": ["node_modules/@types", "src/typings"],
 		"emitDecoratorMetadata": true,
 		"experimentalDecorators": true,
-		"lib": ["ES6"],
+		"lib": ["ESNext"],
 		"pretty": true,
 		"resolveJsonModule": true,
 		"skipLibCheck": true,

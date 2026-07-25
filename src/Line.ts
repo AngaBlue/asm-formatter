@@ -6,7 +6,7 @@ export default class Line {
 	private static patterns = {
 		label: /^\w+:/,
 		directive: /^\.\w+/,
-		arg: /(?<!')\,(?!')/,
+		arg: /(?<!'),(?!')/,
 		string: /^"([^"\\]*(?:\\.[^"\\]*)*)"/,
 		comment: /[#;].+/
 	};
@@ -49,28 +49,28 @@ export default class Line {
 		// Label
 		let match = text.match(Line.patterns.label);
 		if (match) {
-			this.label = match.at(0);
+			this.label = match[0];
 			text = text.slice(this.label.length).trimStart();
 		}
 
 		// Directive
 		match = text.match(Line.patterns.directive);
 		if (match) {
-			this.directive = match.at(0);
+			this.directive = match[0];
 			text = text.slice(this.directive.length).trimStart();
 		}
 
 		// String literal
 		match = text.match(Line.patterns.string);
 		if (match) {
-			this.arguments = [match.at(0)];
+			this.arguments = [match[0]];
 			text = text.slice(this.arguments[0].length);
 		}
 
 		// Comment separator
 		match = text.match(Line.patterns.comment);
 		if (match) {
-			this.comment = match.at(0);
+			this.comment = match[0];
 			text = text.slice(0, match.index).trimEnd();
 		}
 
@@ -80,7 +80,8 @@ export default class Line {
 			.map(a => a.trim())
 			.filter(a => a);
 		if (!this.directive && args.length > 0) {
-			const [instruction, ...arg] = args.shift().split(/\s+/);
+			// biome-ignore lint/style/noNonNullAssertion: already checked
+			const [instruction, ...arg] = args.shift()!.split(/\s+/);
 			this.instruction = instruction;
 			args.unshift(...arg);
 		}
