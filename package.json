@@ -37,7 +37,7 @@
 		"lint": "biome check --fix --error-on-warnings"
 	},
 	"engines": {
-		"vscode": "^1.100.0"
+		"vscode": "^1.125.0"
 	},
 	"keywords": [
 		"vscode",
