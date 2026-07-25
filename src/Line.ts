@@ -80,9 +80,9 @@ export default class Line {
 			.map(a => a.trim())
 			.filter(a => a);
 		if (!this.directive && args.length > 0) {
-			const [instruction, arg] = args.shift().split(/\s+/);
+			const [instruction, ...arg] = args.shift().split(/\s+/);
 			this.instruction = instruction;
-			if (arg) args.unshift(arg);
+			args.unshift(...arg);
 		}
 
 		// Save arguments
